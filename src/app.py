@@ -27,8 +27,11 @@ def prepare_data(df, type_label):
 
 # Create Plotly Express graphs for each type
 def create_figure(data, title):
-    fig = px.area(data, title=title+)
-    fig.update_layout(yaxis_title='Normalized Importance', xaxis_title='Time of Heater Profile (seconds)[Note: This is equivalent to Time after turning on the Heaters and switching it off at 60 seconds boundsay]')
+    # Removed the incorrect '+' after title
+    fig = px.area(data, title=title)
+    fig.update_layout(
+        yaxis_title='Normalized Importance', 
+        xaxis_title='Time of Heater Profile (seconds) [Note: This is equivalent to Time after turning on the Heaters and switching it off at 60 seconds boundsay]')
     return fig
 
 # Types to include in the dashboard
