@@ -26,7 +26,7 @@ def create_figure(data, title):
     fig = px.area(data, title=title)
     fig.update_layout(
         title={'text': title, 'font': {'size': 22}},
-        xaxis_title={'text': 'Time of Heater Profile (seconds) [Note: This is equivalent to Time after turning on the Heaters and switching it off at 60 seconds boundsay]', 'font': {'size': 18}},
+        xaxis_title={'text': 'Time of Heater Profile (seconds)', 'font': {'size': 18}},
         yaxis_title={'text': 'Normalized Importance', 'font': {'size': 18}},
         legend={'font': {'size': 15}},
         xaxis={'tickfont': {'size': 14}},
