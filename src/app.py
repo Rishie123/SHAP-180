@@ -52,7 +52,7 @@ def get_custom_title(type_label):
     return f'{label_type} along {direction}'
 
 # Create figures with custom titles
-figures = [create_figure(prepare_data(df, type_label), f'Cumulative Normalized Feature Importance of Heater Profiles: {get_custom_title(type_label)}') for type_label in types]
+figures = [create_figure(prepare_data(df, type_label), f'Normalized Feature Importance of Heater Profiles for : {get_custom_title(type_label)}') for type_label in types]
 
 # Define the layout of the app to include a graph for each type
 app.layout = html.Div([dcc.Graph(figure=fig) for fig in figures])
