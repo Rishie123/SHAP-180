@@ -33,10 +33,29 @@ def create_figure(data, title):
         yaxis={'tickfont': {'size': 14}}
     )
     return fig
-
-# Types to include in the dashboard
 types = ['IBS_R', 'IBS_N', 'IBS_T', 'OBS_R', 'OBS_N', 'OBS_T']
-figures = [create_figure(prepare_data(df, type_label), f'Cumulative Normalized Feature Importance of Heater Profiles {type_label}') for type_label in types]
+
+# Define a function to map types to more descriptive titles
+def get_custom_title(type_label):
+    if 'IBS' in type_label:
+        label_type = 'IBS'
+    else:
+        label_type = 'OBS'
+    
+    if '_R' in type_label:
+        direction = 'R direction'
+    elif '_N' in type_label:
+        direction = 'N direction'
+    else:
+        direction = 'T direction'
+    
+    return f'{label_type} along {direction}'
+
+# Create figures with custom titles
+figures = [create_figure(prepare_data(df, type_label), f'Cumulative Normalized Feature Importance of Heater Profiles: {get_custom_title(type_label)}') for type_label in types]
+
+# Define the layout of the app to include a graph for each type
+app.layout = html.Div([dcc.Graph(figure=fig) for fig in figures])
 
 # Define the layout of the app to include a graph for each type
 app.layout = html.Div([dcc.Graph(figure=fig) for fig in figures])
